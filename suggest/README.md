@@ -1,0 +1,2 @@
+- docker build -t suggest-api .
+- docker compose up -d
