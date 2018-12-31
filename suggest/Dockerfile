@@ -43,7 +43,7 @@ RUN git clone git://github.com/pyenv/pyenv.git && \
     pyenv/plugins/python-build/install.sh
 RUN python-build ${PYTHON_VERSION} ${PYTHON_PATH}
 
-RUN makedir /app
+RUN mkdir /app
 COPY src/ /app/
 
 WORKDIR /app
