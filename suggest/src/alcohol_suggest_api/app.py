@@ -1,5 +1,4 @@
-import logging.config  ### loggingをconfから読み込む
-from logging import getLogger
+from logging import config, getLogger
 
 from flask import Flask
 
@@ -10,7 +9,7 @@ def create_app(flask_env='production', logging_conf_path='../conf/logging.conf')
 
     Parameters
     ----------
-    flask_env : {'production', 'development', 'test'}, optional, default 'prodection'
+    flask_env : {'production', 'development', 'test'}, optional, default 'production'
         アプリ実行環境
         - production: 本番環境
         - development: 開発環境
@@ -31,7 +30,7 @@ def create_app(flask_env='production', logging_conf_path='../conf/logging.conf')
     
     app.config['JSON_AS_ASCII'] = False
 
-    # config fileで設定を読み込むようにしたほうがいいが、未実装
+    # config fileでapiの設定を読み込むようにしたほうがいいが、未実装
 
     # api部分が作れたら実装 
     # app.register_blueprint(api)
