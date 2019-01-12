@@ -22,7 +22,7 @@ $ docker-compose up -d
 
 ### log directory
 
-- `/var/log/postgres`
+- `/var/log/postgresql`
 
 ### log files
 
