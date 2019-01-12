@@ -7,7 +7,7 @@
 ## Docker Build
 
 ```
-$ docker build -t alcohol_suggest_db
+$ docker build -t alcohol_suggest_db .
 ```
 
 ## docker compose
