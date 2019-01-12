@@ -1,6 +1,4 @@
 from dataclasses import dataclass
-from typing import List
-
 from dataclasses_jsonschema import JsonSchemaMixin
 
 @dataclass
@@ -18,4 +16,26 @@ class SuggestRequest(JsonSchemaMixin):
     glasses : int
 
 
+@dataclass
+class SuggestResponse(JsonSchemaMixin):
+    """レスポンスクラス
+
+    Attributes
+    ---------
+    prefecture
+        出身県候補
+    """
+    prefecture: str = ''
+
+
+@dataclass
+class SuggestErrorResponse(JsonSchemaMixin):
+    """エラーレスポンスクラス
+    
+    Attributes
+    ----------
+    error_message : str
+        エラーメッセージ
+    """
+    error_message : str = ''
 
