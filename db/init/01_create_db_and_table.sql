@@ -49,4 +49,22 @@ SET dafault_tablespace = '';
 
 SET dafault_with_oids = false;
 
+---
+--- Name: candidate; Type: Table; Schema: public; Owner: higher68
+---
 
+CREATE TABLE public.cantidate (
+  id integer NOT NULL 
+  , prefecture character varying(10) NOT NULL
+  , days integer NOT NULL
+  , glasses integer NOT NULL
+  , created_date timestamp default statement_timestamp() NOT NULL
+) ;
+
+
+
+
+
+---
+--- PostgreSQL database dump complete
+---
