@@ -62,8 +62,33 @@ CREATE TABLE public.cantidate (
 ) ;
 
 
+ALTER TABLE public.cantidate OWNER TO higher68;
 
+---
+--- Name: archive; Type: Table; Schema: public; Owner: higher68
+---
 
+CREATE TABLE public.archive (
+  id integer NOT NULL
+  , prefecture character varying(10) NOT NULL
+  , sales integer NOT NULL
+  , consumption integer NOT NULL
+  , created_date timestamp default statement_timestamp() NOT NULL
+) ;
+
+ALTER TABLE public.archive OWNER TO higher68;
+
+---
+--- Name: system_properties; Type: Table; Schema: public; Owner: higher68
+---
+
+CREATE TABLE public.system_properties (
+  past_length integer NOT NULL
+  , candidate_num integer NOT NULL
+  , created_date timestamp default statement_timestamp() NOT NULL
+) ;
+
+ALTER TABLE public.system_properties OWNER TO higher68;
 
 ---
 --- PostgreSQL database dump complete
