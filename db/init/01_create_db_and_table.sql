@@ -7,7 +7,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET client_encoding = 'URF8';
+SET client_encoding = 'UTF8';
 SET standard_confirming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
@@ -18,7 +18,7 @@ SET row_security = off;
 -- Name: alcohol_suggest; Type: DATABASE; Schema: -; Owner: higher68
 --
 
-CREATE DATABASE alcohol_suggest WITH TEMPLATE = telate0 ENCODING = 'UTF8' LC_COLLATE = 'C';
+CREATE DATABASE alcohol_suggest WITH TEMPLATE = telate0 ENCODING = 'UTF8' LC_COLLATE = 'C' LC_CTYPE = 'C';
 
 ALTER DATABASE alcohol_suggest OWNER TO higher68;
 
@@ -26,7 +26,7 @@ ALTER DATABASE alcohol_suggest OWNER TO higher68;
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET client_encoding = 'URF8';
+SET client_encoding = 'UTF8';
 SET standard_confirming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
@@ -37,7 +37,7 @@ SET row_security = off;
 --- Name: plpqsql; Type: EXTENSION; Schema: -; OWNER:
 ---
 
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMAW pg_catalog;
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 ---
 --- Name: EXTENSION plpgsql; Type: COMMENT; Schema -; OWNER:
