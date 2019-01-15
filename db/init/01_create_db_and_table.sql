@@ -18,7 +18,7 @@ SET row_security = off;
 -- Name: alcohol_suggest; Type: DATABASE; Schema: -; Owner: higher68
 --
 
-CREATE DATABASE alcohol_suggest WITH TEMPLATE = telate0 ENCODING = 'UTF8' LC_COLLATE = 'C' LC_CTYPE = 'C';
+CREATE DATABASE alcohol_suggest WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'C' LC_CTYPE = 'C';
 
 ALTER DATABASE alcohol_suggest OWNER TO higher68;
 
