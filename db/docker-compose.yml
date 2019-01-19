@@ -1,0 +1,8 @@
+alcohol_suggest_db:
+  image: alcohol_suggest_db
+  container_name: alcohol_suggest_db
+  hostname: alcohol_suggest_db
+  ports:
+    - '5432:5432'
+  privileged: true
+  restart: always
