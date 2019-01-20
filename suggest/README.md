@@ -1,2 +1,2 @@
-- docker build -t suggest-api .
+- docker build -t alcohol_suggest_api .
 - docker compose up -d

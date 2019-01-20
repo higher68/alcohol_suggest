@@ -1,0 +1,11 @@
+alcohol_suggest_api:
+  image: alcohol_suggest_api
+  container_name: alcohol_suggest_api
+  hostname: alcohol_suggest_api
+  ports:
+    - '8000:8000'
+  extra_hosts:
+    - "db.alcohol_suggest_api:192.165.65.0"
+  privileged: true
+  tty: true
+  restart: always
