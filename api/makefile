@@ -1,5 +1,5 @@
 IMAGE_NAME=alcohol_suggest_api
-CONATAINER_NAME=${IMAGE_NAME}
+CONTAINER_NAME=${IMAGE_NAME}
 
 ALCOHOL_SUGGEST_API_IP=$(shell docker inspect -f "{{.NetworkSettings.IPAddress}}" alcohol_suggest_api)
 
@@ -14,11 +14,11 @@ run:
 
 rm:
 	docker rm \
-		-f ${CONATAINER_NAME}
+		-f ${CONTAINER_NAME}
 
 exec:
 	docker exec \
-		-it ${CONATAINER_NAME} \
+		-it ${CONTAINER_NAME} \
 		bash
 
 restart:
