@@ -8,7 +8,7 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
-SET standard_confirming_strings = on;
+SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
@@ -27,7 +27,7 @@ ALTER DATABASE alcohol_suggest OWNER TO higher68;
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
-SET standard_confirming_strings = on;
+SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
@@ -45,9 +45,9 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
-SET dafault_tablespace = '';
+SET default_tablespace = '';
 
-SET dafault_with_oids = false;
+SET default_with_oids = false;
 
 ---
 --- Name: candidate; Type: Table; Schema: public; Owner: higher68
@@ -59,7 +59,7 @@ CREATE TABLE public.cantidate (
   , days integer NOT NULL
   , glasses integer NOT NULL
   , created_date timestamp default statement_timestamp() NOT NULL
-) ;
+);
 
 
 ALTER TABLE public.cantidate OWNER TO higher68;
