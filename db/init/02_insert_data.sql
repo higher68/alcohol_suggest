@@ -5,7 +5,7 @@ INSERT INTO system_properties(
   , candidate_num
 )
 VALUES (
-  2    -- past_length
-  , 5  -- candidate_num
+  2    -- past_length: unit=year
+  , 5  -- candidate_num unit=prefecture
 )
 
