@@ -41,6 +41,7 @@ def suggest_prefecture():
     except ValidationError as e:
         app.logger.error(e)
     except Exception as e:
+        ## TODO tracebackを使ってログを書く
         app.logger.error(e)
 
 
