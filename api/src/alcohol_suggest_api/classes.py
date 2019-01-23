@@ -25,6 +25,7 @@ class SuggestResponse(JsonSchemaMixin):
     prefecture
         出身県候補
     """
+    ## TODO Atttributeをlistに
     prefecture: str = ''
 
 
