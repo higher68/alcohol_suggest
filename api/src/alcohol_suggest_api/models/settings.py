@@ -2,6 +2,7 @@ from sqlalchemy import inspect
 from sqlalchemy.dialects import postgresql
 
 from . import db
+from ..common_method import start_session
 
 
 class Settings(db.Model):
