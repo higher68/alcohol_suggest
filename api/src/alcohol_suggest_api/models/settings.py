@@ -13,19 +13,24 @@ class Settings(db.Model):
     past_length = db.column(db.Integer, nullable=False)
     candidate_num = db.column(db.Integer, nullable=False)
 
-@staticmethod
-def get_settings():
-    """
-    設定取得
+    @staticmethod
+    def get_settings():
+        """
+        設定取得
 
-    Parameters
-    ----------
-    なし
+        Parameters
+        ----------
+        なし
 
-    Returns
-    -------
-    dict
-        各種設定情報
+        Returns
+        -------
+        dict
+            各種設定情報
 
-    """
-    pass
+        """
+        #TODO start_sessionの実装
+        with start_session() as session:
+            settings = session.query(Settings).first()
+        app.logger.info("{c.key: getattr(settings, c.key) for c in inspect(settings).mapper.column_attrs}")
+        app.logger.info({c.key: getattr(settings, c.key) for c in inspect(settings).mapper.column_attrs})
+        return {c.key: getattr(settings, c.key) for c in inspect(settings).mapper.column_attrs}
