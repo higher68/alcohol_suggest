@@ -1,10 +1,23 @@
-from logging import config, getLogger
+import logging.config
+from logging import getLogger
+
+import traceback
+import os
+
 
 from flask import Flask
 
-## CONFIG_PATH = '../conf/.cfg'
 
-def create_app(flask_env='production', logging_conf_path='../conf/logging.conf'):
+# from .api.mock import mock
+# from tests import test
+from .config import app_config
+from .models import db
+from .models.settings import Settings
+
+
+def create_app(flask_env='production',
+               logging_conf_path='../conf/logging.conf',
+               app_conf_path='../conf/alcohol_suggest.cfg'):
     """アプリインスタンス作成
 
     Parameters
@@ -23,16 +36,34 @@ def create_app(flask_env='production', logging_conf_path='../conf/logging.conf')
         アプリインスタンス
     """
     app = Flask(__name__)
-    
-    ## logging設定
+
+    # logging設定
     logging.config.fileConfig(logging_conf_path)
     app.logger = getLogger(__name__)
-    
+
     app.config['JSON_AS_ASCII'] = False
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-    # config fileでapiの設定を読み込むようにしたほうがいいが、未実装
+    app.config.from_object(app_config[flask_env])
+    if os.path.exists(app_conf_path):
+        app.config.from_pyfile(app_conf_path)
+    else:
+        app.logger.warning(f"Config file is not exists: {app_conf_path}")
 
-    # api部分が作れたら実装 
+    # dbの初期化
+    db.init_app(app)
+    # api部分が作れたら実装
     # app.register_blueprint(api)
+
+#    if flask_env == 'development':
+#        app.register_blueprint(mock)
+#    if flask_env == 'test':
+#        app.register_blueprint(test)
+    try:
+        with app.app_context():
+            app.settings = Settings.get_settings
+    except Exception as e:
+        app.logger.error(f"{e}\n{traceback.format_exec()}")
+        raise e
 
     return app
