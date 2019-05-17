@@ -28,7 +28,6 @@ class Settings(db.Model):
             各種設定情報
 
         """
-        # TODO start_sessionの実装
         with start_session() as session:
             settings = session.query(Settings).first()
         print({c.key: getattr(settings, c.key) for c in inspect(settings).mapper.column_attrs})
