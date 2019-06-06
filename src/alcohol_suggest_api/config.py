@@ -8,7 +8,7 @@ class Config(object):
 
     # application specific config
     PORT = 5000
-    
+
 
 class ProductionConfig(Config):
     """
@@ -32,8 +32,7 @@ class TestingConfig(Config):
 
 
 app_config = {
-        'production': ProductionConfig,
-        'development': DevelopmentConfig,
-        'test': TestingConfig
-        }
-
+    'production': ProductionConfig,
+    'development': DevelopmentConfig,
+    'test': TestingConfig
+}

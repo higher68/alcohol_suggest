@@ -1,2 +1,0 @@
-- docker build -t alcohol_suggest_api .
-- docker compose up -d

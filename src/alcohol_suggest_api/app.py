@@ -1,18 +1,16 @@
 import logging.config
-from logging import getLogger
-
-import traceback
 import os
-
+import traceback
+from logging import getLogger
 
 from flask import Flask
 
-
-# from .api.mock import mock
-# from tests import test
 from .config import app_config
 from .models import db
 from .models.settings import Settings
+
+# from .api.mock import mock
+# from tests import test
 
 
 def create_app(flask_env='production',

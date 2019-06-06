@@ -1,6 +1,7 @@
 """ データタイプに関するテスト """
 import json
 import os
+
 import pytest
 
 
