@@ -1,0 +1,6 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "editor.formatOnSave": true,
+    "python.linting.flake8Path": "/Users/junya/.pyenv/shims/flake8"
+}

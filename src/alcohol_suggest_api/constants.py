@@ -10,6 +10,7 @@ class ApiResultCode(IntEnum):
     VALIDATION_TYPE_ERROR = 101
     VALIDATION_CONSUMPTION_LOWER_LIMIT_ERROR = 103
     VALIDATION_DAYS_UPPER_LIMIT_ERROR = 104
+    SERVER_ERROR = 999
 
 
 def get_error_message(result_code):

@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from .models import db
 
+
 def create_response(res=None, status_code=200):
     """
     レスポンス作成

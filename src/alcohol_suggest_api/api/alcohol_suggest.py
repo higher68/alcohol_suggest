@@ -8,7 +8,7 @@ from jsonschema.exceptions import ValidationError
 
 from .classes import SuggestErrorResponse, SuggestRequest, SuggestResponse
 from ..common_method import create_response, start_session
-from ..constans import ApiResultCode as code, get_error_message
+from ..constants import ApiResultCode as code, get_error_message
 from ..models.settings import Settings
 
 api = Blueprint('api', __name__, url_prefix='/api')
@@ -50,12 +50,20 @@ def suggest_prefecture():
         return create_response(res)
 
     except ValidationError as e:
-        app.logger.error(e)
-        app.logger.error(traceback.format_exc())
-        return create_response()
+        if e.validator == "required":
+            app.logger.error(e)
+            return create_response(get_error_message(code.VALIDATION_REQUIRED_ERROR), 400)
+        elif e.validator == "type":
+            app.logger.error(e)
+            return create_response(get_error_message(code.VALIDATION_TYPE_ERROR), 400)
+        else:
+            app.logger.error(e)
+            app.logger.error(traceback.format_exc())
+            return create_response(e.message, 400)
     except Exception as e:
         app.logger.error(e)
         app.logger.error(traceback.format_exc())
+        return create_response(get_error_message(code.SERVER_ERROR), 500)
 
 
 def make_candidate(amount_month):
@@ -84,5 +92,9 @@ def _validate_alcohol_suggest(request_data, settings):
         ==OK: バリデーションエラーなし
         !=OK: バリデーションエラーあり
     """
-    if request_data.days <= settings.drink_days_upper_limit:
+    if request_data.days > settings.drink_days_upper_limit:
+        return code.VALIDATION_DAYS_UPPER_LIMIT_ERROR
+    if request_data.glasses < settings.alcohol_consumption_lower_limit:
         return code.VALIDATION_CONSUMPTION_LOWER_LIMIT_ERROR
+
+    return code.OK

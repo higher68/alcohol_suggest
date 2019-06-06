@@ -1,4 +1,2 @@
-# アルコール消費量から出身県を当てるAPI群。
-- wrapper
-- batch
-- alcohol_suggest
+- docker build -t alcohol_suggest_api .
+- docker compose up -d
