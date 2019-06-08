@@ -39,14 +39,13 @@ def suggest_prefecture():
         glasses = req.glasses
         app.logger.info(
             f'alcohol suggest start: {days}days {glasses}glasses / week')
-        jug = 350
         app.logger.info('1日あたりの飲酒量計算')
-        amount_day = jug * days * glasses / 7
+        amount_day = settings.ml_of_1glass * days * glasses / 7
         app.logger.info('1月(30日)あたりの飲酒量計算')
         amount_month = amount_day * 30
         results = make_candidate(amount_month)
         res = SuggestResponse(results)
-
+        app.logger.info("処理が正常終了しました。")
         return create_response(res)
 
     except ValidationError as e:
@@ -67,13 +66,15 @@ def suggest_prefecture():
 
 
 def make_candidate(amount_month):
-    """候補県を計算
+    """候補県を取得
 
     Returns
     -------
     候補県のリスト
     """
     # TODO DBから処理を取ってくるところ
+    with start_session() as session:
+        session.query
     # TODO 計算のロジック自体
 
 
@@ -96,5 +97,7 @@ def _validate_alcohol_suggest(request_data, settings):
         return code.VALIDATION_DAYS_UPPER_LIMIT_ERROR
     if request_data.glasses < settings.alcohol_consumption_lower_limit:
         return code.VALIDATION_CONSUMPTION_LOWER_LIMIT_ERROR
+    if request_data.glasses < settings.number_of_output_upper_limit:
+        return code.VALIDATION_OUTPUTNUM_UPPER_LIMIT_ERROR
 
     return code.OK

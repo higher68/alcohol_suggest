@@ -14,6 +14,8 @@ class Settings(db.Model):
     candidate_num = db.Column(db.Integer, nullable=False)
     alcohol_consumption_lower_limit = db.Column(db.Integer, nullable=False)
     drink_days_upper_limit = db.Column(db.Integer, nullable=False)
+    ml_of_1glass = db.Column(db.Integer, nullable=False)
+    number_of_output_upper_limit = db.Column(db.Integer, nullable=False)
 
     @staticmethod
     def get_settings():

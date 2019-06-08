@@ -54,7 +54,7 @@ SET default_with_oids = false;
 ---
 
 CREATE TABLE public.cantidate (
-  id integer NOT NULL 
+  id integer NOT NULL
   , prefecture character varying(10) NOT NULL
   , days integer NOT NULL
   , glasses integer NOT NULL
@@ -82,13 +82,17 @@ ALTER TABLE public.archive OWNER TO higher68;
 --- Name: system_properties; Type: Table; Schema: public; Owner: higher68
 ---
 
-CREATE TABLE public.system_properties (
+CREATE TABLE public.settings (
   past_length integer NOT NULL
   , candidate_num integer NOT NULL
+  , alcohol_consumption_lower_limit integer NOT NULL
+  , drink_days_upper_limit integer NOT NULL
+  , ml_of_1glass integer NOT NULL
+  , number_of_output_upper_limit integer NOT NULL
   , created_date timestamp default statement_timestamp() NOT NULL
 ) ;
 
-ALTER TABLE public.system_properties OWNER TO higher68;
+ALTER TABLE public.settings OWNER TO higher68;
 
 ---
 --- PostgreSQL database dump complete

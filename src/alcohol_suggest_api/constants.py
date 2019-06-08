@@ -10,6 +10,7 @@ class ApiResultCode(IntEnum):
     VALIDATION_TYPE_ERROR = 101
     VALIDATION_CONSUMPTION_LOWER_LIMIT_ERROR = 103
     VALIDATION_DAYS_UPPER_LIMIT_ERROR = 104
+    VALIDATION_OUTPUTNUM_UPPER_LIMIT_ERROR = 105
     SERVER_ERROR = 999
 
 
@@ -31,7 +32,8 @@ def get_error_message(result_code):
     _error_messages = {
         ApiResultCode.VALIDATION_REQUIRED_ERROR: "リクエストの必須項目が足りません",
         ApiResultCode.VALIDATION_TYPE_ERROR: "リクエストの入力値が不正です",
-        ApiResultCode.VALIDATION_CONSUMPTION_LOWER_LIMIT_ERROR: "リクエストの入力値が最小値を下回っています",
-        ApiResultCode.VALIDATION_DAYS_UPPER_LIMIT_ERROR: "リクエストの入力値が最大値を上回っています"
+        ApiResultCode.VALIDATION_CONSUMPTION_LOWER_LIMIT_ERROR: "リクエストの消費量入力値が最小値を下回っています",
+        ApiResultCode.VALIDATION_DAYS_UPPER_LIMIT_ERROR: "リクエストの日数入力値が最大値を上回っています",
+        ApiResultCode.VALIDATION_OUTPUTNUM_UPPER_LIMIT_ERROR: "リクエストの表示数入力値が最大値を上回っています"
     }
     return _error_messages[result_code]
