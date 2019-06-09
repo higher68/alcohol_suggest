@@ -50,36 +50,38 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 ---
---- Name: candidate; Type: Table; Schema: public; Owner: higher68
+--- Name: candidates; Type: Table; Schema: public; Owner: higher68
 ---
 
-CREATE TABLE public.cantidate (
+CREATE TABLE public.cantidates (
   id integer NOT NULL
   , prefecture character varying(10) NOT NULL
   , days integer NOT NULL
   , glasses integer NOT NULL
+  , data_source_ver integer NOT NULL
   , created_date timestamp default statement_timestamp() NOT NULL
 );
 
 
-ALTER TABLE public.cantidate OWNER TO higher68;
+ALTER TABLE public.cantidates OWNER TO higher68;
 
 ---
---- Name: archive; Type: Table; Schema: public; Owner: higher68
+--- Name: archives; Type: Table; Schema: public; Owner: higher68
 ---
 
-CREATE TABLE public.archive (
+CREATE TABLE public.archives (
   id integer NOT NULL
   , prefecture character varying(10) NOT NULL
   , sales integer NOT NULL
   , consumption integer NOT NULL
+  , data_source_ver integer NOT NULL
   , created_date timestamp default statement_timestamp() NOT NULL
 ) ;
 
-ALTER TABLE public.archive OWNER TO higher68;
+ALTER TABLE public.archives OWNER TO higher68;
 
 ---
---- Name: system_properties; Type: Table; Schema: public; Owner: higher68
+--- Name: settings; Type: Table; Schema: public; Owner: higher68
 ---
 
 CREATE TABLE public.settings (

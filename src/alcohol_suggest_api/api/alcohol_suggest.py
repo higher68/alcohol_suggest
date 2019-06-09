@@ -1,4 +1,5 @@
 import traceback
+from datetime import datetime
 
 from flask import Blueprint
 from flask import current_app as app
@@ -9,9 +10,12 @@ from jsonschema.exceptions import ValidationError
 from .classes import SuggestErrorResponse, SuggestRequest, SuggestResponse
 from ..common_method import create_response, start_session
 from ..constants import ApiResultCode as code, get_error_message
+from ..models.archives import Archives
 from ..models.settings import Settings
 
 api = Blueprint('api', __name__, url_prefix='/api')
+with start_session() as session:
+    settings = session.query(Settings).first()
 
 
 @api.route('/suggest', methods=['POST'])
@@ -29,8 +33,6 @@ def suggest_prefecture():
     """
     try:
         req = SuggestRequest.from_dict(request.json)
-        with start_session() as session:
-            settings = session.query(Settings).first()
         validate_result_code = _validate_alcohol_suggest(req, settings)
         if validate_result_code != code.OK:
             return ValidationError(get_error_message(validate_result_code))
@@ -72,9 +74,13 @@ def make_candidate(amount_month):
     -------
     候補県のリスト
     """
-    # TODO DBから処理を取ってくるところ
+    # TODO DBから候補県を年代で絞ってとってくる
+    this_year = datetime.datetime.now().year
     with start_session() as session:
-        session.query
+        query = Archives.prefecture, Archives.consumption, Archives.sales
+        query_filter = (Archives.data_source_ver ==
+                        this_year - settings.past_length)
+        session.query(query).filter(query_filter)
     # TODO 計算のロジック自体
 
 

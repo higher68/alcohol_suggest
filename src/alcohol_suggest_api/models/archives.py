@@ -1,12 +1,13 @@
 from . import db
 
 
-class Archive(db.Model):
+class Archives(db.Model):
     """
-    archiveテーブルクラス
+    archivesテーブルクラス
     """
-    __tablename__ = 'archive'
+    __tablename__ = 'archives'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     prefecture = db.Column(db.Integer, nullable=False)
     sales = db.Column(db.Integer, nullable=False)
     consumption = db.Column(db.Integer, nullable=False)
+    data_source_ver = db.Column(db.Integer, nullable=False)

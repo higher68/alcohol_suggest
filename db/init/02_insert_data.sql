@@ -1,6 +1,6 @@
 \connect alcohol_suggest higher68
 
-INSERT INTO system_properties(
+INSERT INTO settings(
   past_length
   , candidate_num
   , alcohol_consumption_lower_limit
